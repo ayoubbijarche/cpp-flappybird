@@ -2,23 +2,22 @@
 #include <raylib.h>
 #include <iostream>
 
-
 Bird::Bird(){
-  G = 900.0f;
+  G = 1000.0f;
   jumpH = 500.0f;
   rotateDeg = 40;
   velocity = {0 , 0};
   //sprite = {LoadTexture("assets/bird1.png") , LoadTexture("assets/bird2.png") , LoadTexture("assets/bird3.png")};
   sprite = LoadTexture("assets/bird.png");
-  rectframe = {0.0 , 0.0 , (float)sprite.width , (float)sprite.height/3};
+  rectframe = {0.0 , 0.0 , (float)sprite.width , (float)sprite.height/4.0f};
   pos = {180 , 300};
+  framespeed = 8;
 }
 
 void Bird::Jump(){
   this->velocity.y += this->G * GetFrameTime();
   this->pos.y += velocity.y * GetFrameTime();
   if(IsKeyPressed(KEY_SPACE)|| IsMouseButtonPressed(0)){
-    std::cout<<"pressed space"<<std::endl;
     this->velocity.y += -(float)this->jumpH;
   }
 }
@@ -33,10 +32,11 @@ void Bird::Unload(){
 
 void Bird::Init(){
   this->framecounter++;
-  if(this->framecounter>= (60/framespeed)){
+  if(this->framecounter >= (60/this->framespeed)){
     framecounter = 0;
     currentframe++;
     if(currentframe>2) currentframe = 0;
+    this->rectframe.y = (float)this->currentframe * (float)this->sprite.width;
   }
 }
 

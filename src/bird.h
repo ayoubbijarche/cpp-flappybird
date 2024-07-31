@@ -11,7 +11,12 @@ class Bird{
     Vector2 pos;
     Vector2 velocity;
     Texture2D sprite;
-    //std::vector<Texture2D> sprite;
+    Rectangle rectframe;
+    int currentframe;
+    int framecounter;
+    int framespeed;
+    std::vector<Texture2D> sprites;
+    void Init();
     void Jump();
     void Draw();
     void Unload();

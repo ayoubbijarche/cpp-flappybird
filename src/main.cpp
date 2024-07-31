@@ -12,6 +12,7 @@ int main(){
   Parallax parallax = Parallax();
   while (!WindowShouldClose()) {
     bird.Jump();
+    bird.Init();
     parallax.Move();
     BeginDrawing();
       ClearBackground(DARKGRAY);

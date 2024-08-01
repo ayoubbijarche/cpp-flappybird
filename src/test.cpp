@@ -4,6 +4,7 @@
 
 Pipe::Pipe(){
   sprite = LoadTexture("./assets/pipe.png");
+  rectpipe = {0.0 , 0.0 , (float)this->sprite.width , (float)this->sprite.height};
   pos = {500 , 0};
   velocity = {200.0 , 0};
 }
@@ -14,5 +15,5 @@ void Pipe::Move(){
 }
 
 void Pipe::Draw(){
-  DrawTextureV(this->sprite,this->pos , WHITE);
+  DrawTextureRec( this->sprite,this->rectpipe , this->pos , WHITE);
 }
